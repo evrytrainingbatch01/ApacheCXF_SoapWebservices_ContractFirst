@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:core="http://cxf.apache.org/core"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:soap="http://cxf.apache.org/bindings/soap"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+		http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		 http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+		
+		<context:component-scan base-package="com.evry.restaurantservice" />
+		<mvc:annotation-driven />
+
+<context:property-placeholder location="classpath:resources/mysql_database.properties"></context:property-placeholder>
+<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="mydatasource">
+ <property name="driverClassName" value="${database.driver}"/>
+ <property name="url" value="${database.url}" />
+ <property name="username" value="${database.user}"  />
+ <property name="password" value="${database.password}" />
+</bean>
+
+<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+      <property name="dataSource" ref="mydatasource" />
+      <property name="packagesToScan" value="com.evry.restaurantservice.model" />
+      <property name="hibernateProperties">
+         <props>
+            <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+            <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+            <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+         </props>
+      </property>
+   </bean>
+   
+   <bean id="restaurantDaoImpl" class="com.evry.restaurantservice.daoimpl.RestaurantDaoImpl"></bean>
+   <bean id="restaurant" class="com.evry.restaurantservice.model.Restaurant"></bean>
+   <bean id="menu" class="com.evry.restaurantservice.model.Menu"></bean>
+   <bean id="addRestaurantResponse" class="com.evry.restaurantservice.AddRestaurantResponse"></bean>
+   <bean id="addMenuResponse" class="com.evry.restaurantservice.AddMenuResponse"></bean>
+   <bean id="getRestaurantListResponse" class="com.evry.restaurantservice.GetRestaurantListResponse"></bean>
+   
+    <bean id="hibernateUtil" class="com.evry.restaurantservice.util.HibernateUtil"></bean>
+
+<jaxws:endpoint id="op" implementor="com.evry.restaurantservice.serviceimpl.RestaurantServiceImpl" address="/restaurant" />
+
+</beans>

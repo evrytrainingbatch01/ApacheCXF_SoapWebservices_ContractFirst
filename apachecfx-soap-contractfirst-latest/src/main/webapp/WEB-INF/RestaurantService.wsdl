@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.evry.com/RestaurantService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RestaurantService" targetNamespace="http://www.evry.com/RestaurantService/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.evry.com/RestaurantService/">
+    <xsd:element name="AddRestaurantRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="restName" type="xsd:string" />
+                <xsd:element name="restAddress" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+      <xsd:element name="AddRestaurantResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="message" type="xsd:string" />
+                 </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+     <xsd:element name="GetRestaurantListRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="required" type="xsd:boolean" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+     <xsd:element name="GetRestaurantListResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="restaurants">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="restaurant" minOccurs="1" maxOccurs="unbounded">
+                 
+              <xsd:complexType>
+                    <xsd:sequence>
+                <xsd:element name="restId" type="xsd:string" />
+                <xsd:element name="restName" type="xsd:string" />
+                <xsd:element name="restAddress" type="xsd:string" />
+                   </xsd:sequence>
+              </xsd:complexType>
+    </xsd:element>
+                 </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+ </xsd:element>
+ 
+  <xsd:element name="AddMenuRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="restId" type="xsd:string" />
+                <xsd:element name="itemName" type="xsd:string" />
+                <xsd:element name="itemPrice" type="xsd:string" />
+                <xsd:element name="itemType" type="xsd:string" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+     <xsd:element name="AddMenuResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="message" type="xsd:string"/>
+             </xsd:sequence>
+         </xsd:complexType>
+    </xsd:element>
+
+ <xsd:element name="DeleteMenuRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="itemId" type="xsd:string" />
+               
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="DeleteMenuResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="message" type="xsd:string"/>
+             </xsd:sequence>
+         </xsd:complexType>
+    </xsd:element>
+    
+      <xsd:element name="GetMenuListRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="restId" type="xsd:string" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+     <xsd:element name="GetMenuListResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="restName" type="xsd:string"/>
+                 <xsd:element name="itemList">
+                 <xsd:complexType>
+                 <xsd:sequence>
+                 <xsd:element name="item" minOccurs="1" maxOccurs="unbounded">
+                
+                 
+                      <xsd:complexType>
+                      <xsd:sequence>
+                <xsd:element name="itemId" type="xsd:string" />
+                <xsd:element name="itemName" type="xsd:string" />
+                <xsd:element name="itemPrice" type="xsd:string" />
+                <xsd:element name="itemType" type="xsd:string" />
+                      </xsd:sequence>
+                      </xsd:complexType>
+				   </xsd:element>
+               </xsd:sequence>
+               </xsd:complexType>
+			   </xsd:element>
+        </xsd:sequence>
+        </xsd:complexType>
+       
+    </xsd:element>
+
+
+    </xsd:schema>
+  </wsdl:types>
+  
+  
+  <wsdl:message name="AddRestaurantRequest">
+    <wsdl:part element="tns:AddRestaurantRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="AddRestaurantResponse">
+    <wsdl:part element="tns:AddRestaurantResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetRestaurantListRequest">
+    <wsdl:part element="tns:GetRestaurantListRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetRestaurantListResponse">
+    <wsdl:part element="tns:GetRestaurantListResponse" name="parameters"/>
+  </wsdl:message>
+  
+  <wsdl:message name="AddMenuRequest">
+    <wsdl:part element="tns:AddMenuRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="AddMenuResponse">
+    <wsdl:part element="tns:AddMenuResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteMenuRequest">
+    <wsdl:part element="tns:DeleteMenuRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteMenuResponse">
+    <wsdl:part element="tns:DeleteMenuResponse" name="parameters"/>
+  </wsdl:message>
+    <wsdl:message name="GetMenuListRequest">
+    <wsdl:part element="tns:GetMenuListRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetMenuListResponse">
+    <wsdl:part element="tns:GetMenuListResponse" name="parameters"/>
+  </wsdl:message>
+  
+  
+  <wsdl:portType name="IRestaurantService">
+    <wsdl:operation name="addRestaurant">
+      <wsdl:input message="tns:AddRestaurantRequest"/>
+      <wsdl:output message="tns:AddRestaurantResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getRestaurantList">
+      <wsdl:input message="tns:GetRestaurantListRequest"/>
+      <wsdl:output message="tns:GetRestaurantListResponse"/>
+    </wsdl:operation>
+    
+     <wsdl:operation name="addMenu">
+      <wsdl:input message="tns:AddMenuRequest"/>
+      <wsdl:output message="tns:AddMenuResponse"/>
+    </wsdl:operation>
+      <wsdl:operation name="deleteMenu">
+      <wsdl:input message="tns:DeleteMenuRequest"/>
+      <wsdl:output message="tns:DeleteMenuResponse"/>
+    </wsdl:operation>
+     <wsdl:operation name="getMenuList">
+      <wsdl:input message="tns:GetMenuListRequest"/>
+      <wsdl:output message="tns:GetMenuListResponse"/>
+    </wsdl:operation>
+   
+  </wsdl:portType>
+  
+  
+  <wsdl:binding name="IRestaurantServiceImplServiceSOAPBinding" type="tns:IRestaurantService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addRestaurant">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRestaurantList">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    
+    <wsdl:operation name="addMenu">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteMenu">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    
+     <wsdl:operation name="getMenuList">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    
+  </wsdl:binding>
+  <wsdl:service name="IRestaurantServiceImplService">
+    <wsdl:port binding="tns:IRestaurantServiceImplServiceSOAPBinding" name="IRestaurantServiceImplPort">
+      <soap:address location="http://localhost:8007/apachecxf-soap-assignment/services/IRestaurantServiceImplService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
