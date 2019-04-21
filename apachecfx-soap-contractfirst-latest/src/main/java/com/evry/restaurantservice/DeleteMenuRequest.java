@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="restId" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="itemId" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -29,13 +30,40 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+    "restId",
     "itemId"
 })
 @XmlRootElement(name = "DeleteMenuRequest")
 public class DeleteMenuRequest {
 
     @XmlElement(required = true)
+    protected String restId;
+    @XmlElement(required = true)
     protected String itemId;
+
+    /**
+     * Gets the value of the restId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getRestId() {
+        return restId;
+    }
+
+    /**
+     * Sets the value of the restId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setRestId(String value) {
+        this.restId = value;
+    }
 
     /**
      * Gets the value of the itemId property.

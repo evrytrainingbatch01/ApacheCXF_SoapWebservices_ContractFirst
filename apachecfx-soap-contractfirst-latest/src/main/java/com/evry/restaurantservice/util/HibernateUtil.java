@@ -8,13 +8,13 @@ public class HibernateUtil {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-	private static ThreadLocal<Session> threadLocal =new ThreadLocal<Session>();
+//	private static ThreadLocal<Session> threadLocal =new ThreadLocal<Session>();
 	private Session session;
 	
 	public Session getSession()
 	{
 		
-		if(threadLocal.get()==null)
+		/*if(threadLocal.get()==null)
 		{
 			System.out.println("if");
 			session=sessionFactory.openSession();
@@ -26,17 +26,18 @@ public class HibernateUtil {
 		else {
 			System.out.println("else");
 		session=threadLocal.get();
-		}
+		}*/
+		session=sessionFactory.openSession();
 		return session;
 	}
 	
-	public  void closeSession()
+	/*public  void closeSession()
 	{
 	
 	session=threadLocal.get();
 	session.close();
 	threadLocal.remove();
-}
+}*/
 	public  void closeSessionFactory()
 	{
 		sessionFactory.close();

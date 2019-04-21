@@ -69,6 +69,8 @@
  <xsd:element name="DeleteMenuRequest">
         <xsd:complexType>
             <xsd:sequence>
+            
+                <xsd:element name="restId" type="xsd:string" />
                 <xsd:element name="itemId" type="xsd:string" />
                
             </xsd:sequence>

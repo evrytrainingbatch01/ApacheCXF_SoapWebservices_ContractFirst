@@ -42,6 +42,8 @@
    <bean id="menu" class="com.evry.restaurantservice.model.Menu"></bean>
    <bean id="addRestaurantResponse" class="com.evry.restaurantservice.AddRestaurantResponse"></bean>
    <bean id="addMenuResponse" class="com.evry.restaurantservice.AddMenuResponse"></bean>
+   <bean id="deleteMenuResponse" class="com.evry.restaurantservice.DeleteMenuResponse"></bean>
+    <bean id="getMenuListResponse" class="com.evry.restaurantservice.GetMenuListResponse"></bean>
    <bean id="getRestaurantListResponse" class="com.evry.restaurantservice.GetRestaurantListResponse"></bean>
    
     <bean id="hibernateUtil" class="com.evry.restaurantservice.util.HibernateUtil"></bean>
