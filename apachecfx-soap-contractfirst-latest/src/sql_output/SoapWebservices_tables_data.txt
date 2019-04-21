@@ -1,38 +1,62 @@
 mysql>
 mysql>
-mysql> select * from restaurant;
-+---------------+--------------------+-----------------+
-| restaurant_id | restaurant_address | restaurant_name |
-+---------------+--------------------+-----------------+
-|             1 | rest 1             | rest 1          |
-|             2 | rest 2             | rest 2          |
-|             3 | rest 3             | rest 3          |
-|             4 | rest 4             | rest 4          |
-|             5 | rest 5             | rest 5          |
-+---------------+--------------------+-----------------+
+mysql> use webservices;
+Database changed
+mysql>
+mysql>
+mysql> show tables;
++-----------------------+
+| Tables_in_webservices |
++-----------------------+
+| menu                  |
+| restaurant            |
+| restaurant_menu       |
++-----------------------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql>
+mysql>
+mysql> select * from  restaurant;
++---------------+--------------------+------------------+
+| restaurant_id | restaurant_address | restaurant_name  |
++---------------+--------------------+------------------+
+|             1 | Electronic city    | Hyderbad Spicy   |
+|             2 | Marathali          | Barchi           |
+|             3 | Vijayawada         | Godavari Delight |
+|             4 | Hyderabad          | Paradise         |
+|             5 | Chennai            | Anand Bavan      |
++---------------+--------------------+------------------+
 5 rows in set (0.00 sec)
 
-mysql>
-mysql>
 mysql> select * from menu;
-+---------+-----------+------------+-----------+
-| item_id | item_name | item_price | item_type |
-+---------+-----------+------------+-----------+
-|       1 | sambar    |         10 | veg       |
-|       2 | Biryani   |        150 | non-veg   |
-+---------+-----------+------------+-----------+
-2 rows in set (0.00 sec)
++---------+-----------------+------------+-----------+
+| item_id | item_name       | item_price | item_type |
++---------+-----------------+------------+-----------+
+|       1 | Meals           |         60 | veg       |
+|       2 | Chicken Biryani |        150 | non-veg   |
+|       3 | Mutton Biryani  |        200 | non-veg   |
+|       5 | Bendi Fry       |         30 | veg       |
+|       6 | Prawns curry    |        120 | non-veg   |
+|       7 | Prawns Fry      |        130 | non-veg   |
+|       8 | Meals           |         80 | veg       |
++---------+-----------------+------------+-----------+
+7 rows in set (0.00 sec)
 
-mysql>
-mysql>
-mysql> select * from restaurant_menu;
+mysql> select * from  restaurant_menu;
 +--------------------------+------------------+
 | Restaurant_restaurant_id | itemList_item_id |
 +--------------------------+------------------+
+|                        1 |                7 |
+|                        1 |                8 |
 |                        3 |                1 |
-|                        4 |                2 |
+|                        3 |                2 |
+|                        3 |                3 |
+|                        3 |                5 |
+|                        3 |                6 |
 +--------------------------+------------------+
-2 rows in set (0.00 sec)
+7 rows in set (0.00 sec)
 
 mysql>
 
